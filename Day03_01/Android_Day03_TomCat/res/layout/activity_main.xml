@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/breath_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/breath_anim"
+    tools:context=".MainActivity" >
+
+    <!-- 布局文件中添加一个点击事件属性android:onClick -->
+    <!-- 布局的嵌套 -->
+
+
+    <!-- 为了显示点击不同位置，显示不同的动画效果 -->
+
+    <RelativeLayout
+        android:id="@+id/other_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <!-- 点击眼镜的按钮 -->
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:onClick="Start_look"
+            android:layout_marginTop="120dp"
+            android:background="@null" />
+        <!-- 点击嘴巴的按钮 -->
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp"
+            android:onClick="Start_talk"
+            android:background="@null" />
+        <!-- 点击尾巴的按钮 -->
+
+
+        <!-- android:layout_alignParentRight="true" 针对于父控件右边对其 -->
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="80dp"
+            android:onClick="Start_fart"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@null" />
+    </RelativeLayout>
+
+</RelativeLayout>

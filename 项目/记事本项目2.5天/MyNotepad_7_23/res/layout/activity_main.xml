@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dbefd4"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <!-- 标题栏部分 -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:background="#a6c43d" >
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/tubiao1" />
+
+        <!-- android:layout_centerInParent="true"设置当前控件位于该父类布局的中间位置 -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="记事本"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <!-- android:gravity="center"内容居中 -->
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ib_btn"
+            android:gravity="center"
+            android:text="全部\n0"
+            android:textColor="#000" />
+    </RelativeLayout>
+    <!-- 分割线 -->
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:background="#ce2cd8" />
+    <!-- 信息列表 -->
+
+    <ListView
+        android:id="@+id/listview_01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+
+</LinearLayout>

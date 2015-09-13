@@ -1,0 +1,775 @@
+
+    （对我们的攻击，先说，我要最用心！我不一定最优秀，谦虚！）
+    （提问，项目展示，普京和习近平握手，互送一个手机，为什么不送导弹！）
+    （1. 学校的设备，提前，做好统计，软件，安装，提前一天就，效率，）
+    （2. 提前了解学生，学校的层次，分数线，难易一定了解清楚，）
+    （3. 团队，比赛，）
+    （编程全国开发，巡回讲座，）
+
+
+        实训大纲
+        =======
+
+01. Day_04
+
+    1.01  幸运大抽奖项目介绍
+
+    1.02  Android_Day04_Lottery创建
+	(1)创建项目
+	        01. File --> New --> Android Application Project；
+   	        02. --> Application Name: Android_Day01_01 —指定软件的名称
+’   	        03. —-> Project Name    : Android_Day01_01 —指定工程名称  在Package Explore中显示
+    	        04. —-> Minimum Required SDK :指定Android最低版本
+	        05. —-> Target SDK :  指定目标版本 
+	        06. —-> Compile With: 指定编辑环境版本
+	        07. —-> Theme: 选择主题
+                03. --> Next --> Next --> Next --> Blank Activity (Create Activity)；
+                04. --> Next --> Activity Name: MainActivity --> Finish
+
+
+
+    1.03 更改软件的图标和软件名称
+	(1)将图片拷贝到项目res文件夹下->drawable-hdpi中
+	(2)找到AndroidManifest.xml打开->更改图片和软件名称
+		 <!-- android:icon="@drawable/tomcat_logo" 更改软件图标 -->
+   		 <!-- android:label="@string/app_name" 更改软件名称 -->
+ 			<!-- android:theme="@android:style/						Theme.Black.NoTitleBar.Fullscreen" 全屏 没有标题栏没有状态栏 -->
+   		 <application
+			android:allowBackup="true"
+ 		        android:icon="@drawable/image01"
+		        android:label="@string/app_name"
+		        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+	
+		strings.xml文件下更改名称
+		<resources>
+
+   		 <string name="app_name">幸运大抽奖</string>
+   		 <string name="action_settings">Settings</string>
+   		 <string name="hello_world">Hello world!</string>
+
+		</resources>
+   
+
+
+    1.04 编写activity_main.xml布局文件
+			在drawable-hdpi编写button_anim.xml文件
+		<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 每个item相当于一个图片  android:drawable 引导一张图片资源  android:duration="60"  间隔时间 -->
+    <item
+        android:drawable="@drawable/breath_0001"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/breath_0002"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/breath_0003"
+        android:duration="60"/>
+	<!—此处省略多个—>
+
+</animation-list>
+
+
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView_prize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="获奖人数："
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editText_prize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ems="3"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout1"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView_totalNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参与人数："
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editText_totalNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:enabled="false"
+            android:inputType="number" >
+        </EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_ok"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout2"
+        android:background="@drawable/button_bg"
+        android:text="确定" />
+
+    <ImageView
+        android:id="@+id/imageView_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/imageview_anim" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/button_anim" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView_bg"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/a"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textView_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text=" ？？？"
+            android:textColor="@android:color/black"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+</RelativeLayout>
+    1.05  MainActivity.java编写
+		
+		package com.example.android_day04_lottery;
+
+import java.util.HashMap;
+import java.util.Random;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * 
+ * @author liushuaitao
+ * 
+ */
+public class MainActivity extends Activity implements OnClickListener {
+
+	/**
+	 * 声明存放参赛人数的map
+	 */
+	private HashMap<Integer, String> map;
+
+	/**
+	 * 声明存储参赛人数的变量
+	 */
+	private int count;
+
+	/**
+	 * 声明中奖人数
+	 */
+	private int prizeNum;
+
+	/**
+	 * 声明进度对话框
+	 */
+	private ProgressDialog progressDialog;
+
+	/**
+	 * 声明获奖人数输入框
+	 */
+	private EditText editText_prize;
+
+	/**
+	 * 声明参与人数的输入框
+	 */
+	private EditText editText_totalNum;
+
+	/**
+	 * 声明确定按钮
+	 */
+	private Button button_ok;
+
+	/**
+	 * 声明开始抽奖按钮
+	 */
+	public Button button_start;
+
+	/**
+	 * 声明显示中奖人的姓名的控件
+	 */
+	private TextView textView_name;
+
+	/**
+	 * 声明抽奖动画控件
+	 */
+	private ImageView imageView_bg;
+
+	/**
+	 * 声明存放获奖人名字的索引值
+	 */
+	private int[] prizeArray;
+
+	/**
+	 * 声明默认获奖编号
+	 */
+	private int prizeId;
+
+	/**
+	 * 声明抽奖次数
+	 */
+	private int prizeTime;
+
+	/**
+	 * 声明动画对象
+	 */
+	private AnimationDrawable animationDrawable_imageView;
+	private AnimationDrawable animationDrawable_button;
+
+	/**
+	 * 声明抽奖线程对象
+	 */
+	private MyThread myThread;
+
+	/**
+	 * 声明是否正在抽奖的标志
+	 */
+	private boolean isPrizing = true;
+
+	/**
+	 * 声明处理器负责子线程和主线程之间的通讯
+	 */
+
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			if (msg.what == 100) {
+				// 停止锟介奖
+				myThread.stopThread();
+				// 锟皆伙拷锟斤拷锟斤拷失
+				progressDialog.dismiss();
+				if (prizeTime < prizeNum) {
+					String name = map.get(prizeId);
+					textView_name.setText(name);
+					textView_name.setTextColor(Color.RED);
+					prizeArray[prizeTime] = prizeId;
+					prizeTime++;
+
+				} else {
+					isPrizing = false;
+					button_start.setClickable(false);
+					textView_name.setText("抽奖完毕");
+					textView_name.setTextColor(Color.YELLOW);
+				}
+			} else {
+				sweepStake(msg.what);
+			}
+		}
+
+		/**
+		 * 锟介奖
+		 * 
+		 * @param what
+		 */
+		private void sweepStake(int what) {
+			if (isPrizing) {
+				// 锟矫碉拷锟斤拷锟斤拷榻憋拷说锟斤拷锟斤拷锟�
+				String name = map.get(what);
+				textView_name.setText(name);
+			}
+
+		}
+	};
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		Intent intent = this.getIntent();
+		map = (HashMap<Integer, String>) intent.getSerializableExtra("map");
+		count = intent.getIntExtra("count", 0);
+
+		this.initView();
+		this.startImageViewAnimation();
+
+	}
+
+	/**
+	 * 锟斤拷锟斤拷ImageView锟斤拷锟斤拷
+	 */
+	private void startImageViewAnimation() {
+		animationDrawable_imageView = (AnimationDrawable) this.imageView_bg
+				.getBackground();
+		animationDrawable_imageView.start();
+	}
+
+	/**
+	 * 锟斤拷始锟斤拷锟截硷拷
+	 * 
+	 */
+	private void initView() {
+		this.editText_prize = (EditText) this.findViewById(R.id.editText_prize);
+		this.editText_prize.requestFocus();
+
+		this.editText_totalNum = (EditText) this
+				.findViewById(R.id.editText_totalNum);
+		this.editText_totalNum.setText(String.valueOf(count));
+
+		this.textView_name = (TextView) this.findViewById(R.id.textView_name);
+
+		this.imageView_bg = (ImageView) this.findViewById(R.id.imageView_bg);
+
+		this.button_ok = (Button) this.findViewById(R.id.button_ok);
+		this.button_ok.setOnClickListener(this);
+
+		this.button_start = (Button) this.findViewById(R.id.button_start);
+		this.button_start.setOnClickListener(this);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		switch (id) {
+		case R.id.button_ok:
+			this.prizeNum = Integer.parseInt(this.editText_prize.getText()
+					.toString().trim());
+			if (prizeNum > count) {
+				this.editText_prize.setError("锟斤锟斤拷锟斤拷!");
+				this.editText_prize.setText("");
+				this.editText_prize.requestFocus();
+				return;
+			}
+
+			this.prizeArray = new int[this.prizeNum];
+			this.editText_prize.setFocusable(false);
+
+			// 锟斤拷锟斤拷锟斤拷始锟介奖锟斤拷钮锟斤拷锟斤拷
+			this.animationDrawable_button = (AnimationDrawable) this.button_start
+					.getBackground();
+			this.animationDrawable_button.start();
+			
+
+			this.button_ok.setClickable(false);
+			this.button_start.setClickable(true);
+
+			// 实锟斤拷锟斤拷锟斤拷始锟介奖锟竭筹拷
+			this.myThread = new MyThread();
+			this.myThread.start();
+			break;
+
+		case R.id.button_start:
+			if (!myThread.isStop()) {
+				// 停止锟介奖锟斤拷锟斤拷
+				animationDrawable_button.stop();
+				progressDialog = new ProgressDialog(this);
+				progressDialog.setTitle("正在计算结果");
+				progressDialog.setMessage("请等待5秒钟....");
+				progressDialog.setCancelable(false);
+				progressDialog.show();
+
+				// 锟斤拷始锟斤拷锟斤拷时
+				new TimerThread().start();
+			} else {
+				// 锟斤拷始锟介奖锟斤拷锟斤拷
+				animationDrawable_button.start();
+				this.myThread = new MyThread();
+				this.myThread.start();
+				this.isPrizing = true;
+				textView_name.setTextColor(Color.BLACK);
+			}
+			break;
+		}
+	}
+
+	/**
+	 * 锟介奖锟斤拷锟斤拷时
+	 * 
+	 * 
+	 */
+	private final class TimerThread extends Thread {
+		@Override
+		public void run() {
+			try {
+				// 锟接筹拷5锟斤拷
+				Thread.sleep(5000);
+				// 锟斤拷锟斤拷锟介奖
+				handler.sendEmptyMessage(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * 锟皆讹拷锟藉开始锟介奖锟竭筹拷
+	 * 
+	 * 
+	 */
+	private final class MyThread extends Thread {
+		/**
+		 * 
+		 * 锟斤拷锟斤拷锟竭筹拷锟角凤拷停止锟侥憋拷志
+		 */
+		private boolean isStop=false;
+
+		/**
+		 * 停止锟竭程碉拷锟斤拷锟斤拷
+		 */
+		public void stopThread() {
+			this.isStop = true;
+		}
+
+		/**
+		 * 锟斤拷锟斤拷锟竭筹拷锟角凤拷停止锟侥憋拷志
+		 * 
+		 * @return
+		 */
+		public boolean isStop() {
+			return isStop;
+		}
+		
+		public void RunRandom(){
+			// 锟矫碉拷1锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷之锟斤拷锟斤拷锟斤拷锟斤拷
+			int randomNum = 0;
+			boolean flag = false;
+			
+			// 锟斤拷锟斤拷锟斤拷锟介，锟介看锟角凤拷锟窖撅拷锟叫斤拷
+			do {
+				flag = false;
+				randomNum = new Random().nextInt(count) + 1;
+					for(int i=0;i<prizeArray.length;i++){
+						if(randomNum==prizeArray[i]){
+							flag = true;
+						}
+					}
+			} while (flag);
+
+			// 锟斤拷锟斤拷锟窖∪★拷谋锟脚存储锟斤拷全锟街憋拷锟斤拷锟斤拷
+			prizeId = randomNum;
+
+			handler.sendEmptyMessage(randomNum);
+		}
+
+		@Override
+		public void run() {
+			// 锟斤拷锟斤拷锟角凤拷锟叫斤拷锟侥憋拷志
+			 
+			while (!this.isStop) {
+				RunRandom();
+
+				try {
+					// 每锟斤拷50锟斤拷锟斤拷锟斤拷锟揭伙拷锟斤拷锟斤拷锟斤拷
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+}
+先写 activity_start.xml
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg" >
+
+    <TextView
+        android:id="@+id/textView_num_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="150dp"
+        android:text="参赛人数："
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_num_tip"
+        android:layout_toRightOf="@+id/textView_num_tip"
+        android:text="0"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView_num_tip"
+        android:layout_below="@+id/textView_num_tip"
+        android:layout_marginTop="20dp"
+        android:text="姓        名："
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_name"
+        android:layout_toRightOf="@+id/textView_name"
+        android:ems="10"
+        android:hint="请输入姓名"
+        android:inputType="textPersonName" >
+    </EditText>
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_name"
+        android:layout_below="@+id/textView_name"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
+        android:text="添加" />
+
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_add"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/button_add"
+        android:background="@drawable/button_bg"
+        android:text="清空" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="80dp"
+		android:layout_marginRight="50dp"
+        android:background="@drawable/button_bg"
+        android:text="开始游戏" />
+
+    <Button
+        android:id="@+id/button_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:layout_below="@+id/button_start"
+        android:layout_alignLeft="@+id/button_start"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
+        android:text="退出游戏" />
+
+</RelativeLayout>
+
+
+先写StartActivity.java
+
+package com.example.android_day04_lottery;
+
+import java.util.HashMap;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+/**
+ * 
+ * @author liushuaitao
+ *
+ */
+public class StartActivity extends Activity implements OnClickListener {
+
+	/**
+	 * 声明参赛人数TextView控件
+	 */
+	private TextView textView_num;
+	/**
+	 * 声明参赛姓名输入框对象
+	 */
+	private EditText editText_name;
+	
+	/**
+	 * 声明添加参赛人姓名的按钮
+	 */
+	private Button button_add;
+	
+	/**
+	 * 声明清空参赛人姓名的按钮
+	 */
+	private Button button_clear;
+	
+	/**
+	 * 声明游戏开始的按钮
+	 */
+	private Button button_start;
+	/**
+	 * 声明退出游戏的按钮
+	 */
+	private Button button_exit;
+	
+	/**
+	 * 声明存储参赛人姓名的map对象
+	 */
+	private HashMap<Integer, String> map=new HashMap<Integer, String>();
+	
+	/**
+	 * 声明初始键的值为1,之后依次递增
+	 */
+	private int key=1;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_start);
+		this.initView();
+	}
+
+	/**
+	 * 初始化控件
+	 */
+	private void initView() {
+		this.textView_num=(TextView) this.findViewById(R.id.textView_num);
+		this.editText_name=(EditText) this.findViewById(R.id.editText_name);
+		
+		this.button_add=(Button) this.findViewById(R.id.button_add);
+		this.button_add.setOnClickListener(this);
+		
+		this.button_clear=(Button) this.findViewById(R.id.button_clear);
+		this.button_clear.setOnClickListener(this);
+		
+		this.button_start=(Button) this.findViewById(R.id.button_start);
+		this.button_start.setOnClickListener(this);
+		
+		this.button_exit=(Button) this.findViewById(R.id.button_exit);
+		this.button_exit.setOnClickListener(this);
+	}
+
+
+
+	@Override
+	public void onClick(View v) {
+		int id=v.getId();
+		switch (id) {
+			case R.id.button_add:
+				String name=this.editText_name.getText().toString().trim();
+				map.put(key, name);
+				this.textView_num.setText(String.valueOf(key));
+				key++;
+				this.editText_name.setText("");
+				this.editText_name.requestFocus();
+				
+				break;
+	
+			case R.id.button_clear:
+				this.editText_name.setText("");
+				this.editText_name.requestFocus();
+				break;
+			case R.id.button_start:
+				Intent intent=new Intent(this,MainActivity.class);
+				intent.putExtra("map",map);
+				intent.putExtra("count",--key);
+				this.startActivity(intent);
+				this.finish();
+				break;
+			case R.id.button_exit:
+				this.finish();
+				break;
+		}
+		
+	}
+
+}
+配置文件
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android_day04_lottery"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    <!-- android:icon="@drawable/tomcat_logo" 更改软件图标 -->
+    <!-- android:label="@string/app_name" 更改软件名称 -->
+    <!-- android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" 全屏 没有标题栏没有状态栏 -->
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/image01"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+ (1)       <activity
+            android:name="com.example.android_day04_lottery.StartActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+(2)        <activity
+            android:name="com.example.android_day04_lottery.MainActivity"
+            android:screenOrientation="landscape" >
+        </activity>
+    </application>
+
+</manifest>

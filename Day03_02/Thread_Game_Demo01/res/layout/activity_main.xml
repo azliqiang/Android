@@ -1,0 +1,114 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/hhh" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#ff00ff" />
+		<!--android:ellipsize="marquee" 实现跑马灯效果  -->
+		<!--android:focusable="true" 获取焦点的属性  --> 
+		<!--android:focusableInTouchMode="true" 获取焦点的属性 -->
+		<!--android:marqueeRepeatLimit="marquee_forever" 跑马灯效果无线循环  -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:background="@android:color/black"
+        android:focusableInTouchMode="true"
+        android:textColor="@android:color/white"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:text="本游戏名称为：剪刀石头布游戏，游戏规则为：。。。。。。。。。。。。。。。。。。。。。。。" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#ff00ff" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <RadioGroup
+            android:id="@+id/radiogroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剪刀" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="石头" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="布" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radiogroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剪刀" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="石头" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="布" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#ff00ff" />
+
+    <Button
+        android:id="@+id/btn_kaishi"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="开始比赛" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#ff00ff" />
+    <TextView 
+        android:id="@+id/tv_jieguo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="比赛结果为：。。。。"/>
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="weather_title_bj">#9cd0e5</color>
+    <color name="weather_line">#0a20fa</color>
+    <color name="weatehr_Day_bj">#bfccce</color>
+    
+</resources>

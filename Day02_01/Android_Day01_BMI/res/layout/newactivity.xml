@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- LinearLayout线性布局 -->
+    <!-- 480*800 -->
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/bmi_2" />
+    <!-- android:gravity="center_horizontal"内容居中的属性 -->
+
+
+    <!-- 显示BMI值得控件 -->
+
+    <TextView
+        android:id="@+id/tv_BMI"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="您测试的BMI值为：\n21.00"
+        android:textColor="#ff00ff"
+        android:textSize="20sp" />
+
+    <!-- 显示健康程度的文本 -->
+
+    <TextView
+        android:id="@+id/tv_zhuangtai"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="您目前处于:\n健康状态"
+        android:textColor="#00ffff"
+        android:textSize="20sp" />
+
+    <!-- 建议 -->
+
+    <TextView
+        android:id="@+id/tv_jianyi"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="建议您的体重保持在：\n 60kg——70kg\n之间"
+        android:textColor="#00ff00"
+        android:textSize="20sp" />
+
+    
+
+</LinearLayout>

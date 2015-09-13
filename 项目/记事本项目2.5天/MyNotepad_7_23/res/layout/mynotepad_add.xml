@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dbefd4" >
+
+    <!-- 标题栏部分 -->
+
+    <RelativeLayout
+        android:id="@+id/add_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:background="#a6c43d" >
+
+        <Button
+            android:id="@+id/btn_nosave"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/cha" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="新建记事本"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/gou"
+            android:gravity="center"
+            android:textColor="#000" />
+    </RelativeLayout>
+    <!-- 分割线 -->
+
+    <View
+        android:id="@+id/add_line"
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/add_layout"
+        android:background="#ce2cd8" />
+
+    <!-- 输入标题 -->
+
+    <LinearLayout
+        android:id="@+id/add_layout02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题："
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请输入标题" />
+    </LinearLayout>
+
+    <!-- 选择天气 -->
+
+    <LinearLayout
+        android:id="@+id/add_layout03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_layout02"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="天气："
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <!-- 下拉选择的控件 -->
+        <Spinner
+            android:id="@+id/add_spinner"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- 输入内容的部分 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_layout03"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内容"
+            android:textColor="#00ff00"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/add_body"
+            android:layout_width="280dp"
+            android:layout_height="240dp"
+            android:gravity="top|left"
+            android:hint="随记。。随想。。。" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,233 @@
+
+    （对我们的攻击，先说，我要最用心！我不一定最优秀，谦虚！）
+    （提问，项目展示，普京和习近平握手，互送一个手机，为什么不送导弹！）
+    （1. 学校的设备，提前，做好统计，软件，安装，提前一天就，效率，）
+    （2. 提前了解学生，学校的层次，分数线，难易一定了解清楚，）
+    （3. 团队，比赛，）
+    （编程全国开发，巡回讲座，）
+
+
+        实训大纲
+        =======
+
+01. Day_03
+
+    1.01  汤姆猫游戏的介绍
+
+    1.02  Android_Day03_TomCat创建
+	(1)创建项目
+	        01. File --> New --> Android Application Project；
+   	        02. --> Application Name: Android_Day01_01 —指定软件的名称
+’   	        03. —-> Project Name    : Android_Day01_01 —指定工程名称  在Package Explore中显示
+    	        04. —-> Minimum Required SDK :指定Android最低版本
+	        05. —-> Target SDK :  指定目标版本 
+	        06. —-> Compile With: 指定编辑环境版本
+	        07. —-> Theme: 选择主题
+                03. --> Next --> Next --> Next --> Blank Activity (Create Activity)；
+                04. --> Next --> Activity Name: MainActivity --> Finish
+
+
+
+    1.03 更改软件的图标和软件名称
+	(1)将图片拷贝到项目res文件夹下->drawable-hdpi中
+	(2)找到AndroidManifest.xml打开->更改图片和软件名称
+		 <!-- android:icon="@drawable/tomcat_logo" 更改软件图标 -->
+   		 <!-- android:label="@string/app_name" 更改软件名称 -->
+   		 <application
+   		     android:allowBackup="true"
+    		     android:icon="@drawable/tomcat_logo"
+   		     android:label="@string/app_name"
+     		     android:theme="@style/AppTheme" >
+	
+		strings.xml文件下更改名称
+		<resources>
+
+   		 <string name="app_name">汤姆猫游戏</string>
+   		 <string name="action_settings">Settings</string>
+   		 <string name="hello_world">Hello world!</string>
+
+		</resources>
+   
+
+
+    1.04 编写activity_main.xml布局文件
+
+		在drawable-hdpi编写breath_anim.xml文件
+		<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 每个item相当于一个图片  android:drawable 引导一张图片资源  android:duration="60"  间隔时间 -->
+    <item
+        android:drawable="@drawable/breath_0001"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/breath_0002"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/breath_0003"
+        android:duration="60"/>
+	<!—此处省略多个—>
+
+</animation-list>
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    xmlns:tools="http://schemas.android.com/tools"
+		    android:id="@+id/breath_layout"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:background="@drawable/breath_anim"
+		    tools:context=".MainActivity" >
+
+		    <!-- 布局文件中添加一个点击事件属性android:onClick -->
+		    <!-- 布局的嵌套 -->
+
+
+		    <!-- 为了显示点击不同位置，显示不同的动画效果 -->
+
+		    <RelativeLayout
+ 		       android:id="@+id/other_layout"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent" >
+
+        <!-- 点击眼镜的按钮 -->
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:onClick="Start_look"
+            android:layout_marginTop="120dp"
+            android:background="@null" />
+        <!-- 点击嘴巴的按钮 -->
+	<!--android:background="@null" 按钮透明设置  -->
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp"
+            android:onClick="Start_talk"
+            android:background="@null" />
+        <!-- 点击尾巴的按钮 -->
+
+
+        <!-- android:layout_alignParentRight="true" 针对于父控件右边对其 -->
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="80dp"
+            android:onClick="Start_fart"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@null" />
+    </RelativeLayout>
+
+</RelativeLayout>
+    1.05  MainActivity.java编写
+		
+		package com.example.android_day03_tomcat;
+
+		import java.util.HashMap;
+
+		import android.app.Activity;
+		import android.graphics.drawable.AnimationDrawable;
+		import android.media.AudioManager;
+		import android.media.SoundPool;
+		import android.os.Bundle;
+		import android.os.Handler;
+		import android.view.View;
+
+		public class MainActivity extends Activity {
+
+			// 创建一个定时器
+				public Handler handler = new Handler();
+				private SoundPool sp;
+				private HashMap<Integer, Integer> map;
+		
+				@Override		
+				protected void onCreate(Bundle savedInstanceState) {
+					super.onCreate(savedInstanceState);
+					setContentView(R.layout.activity_main);
+			// 创建一个播放器
+			/**
+			 * maxStreams 最大播放条数 streamType、 播放音乐的类型
+			 */
+			sp = new SoundPool(3, AudioManager.STREAM_SYSTEM, 1);
+			// 创建SD卡， 创建一个可以存放音频文件的集合
+			map = new HashMap<Integer, Integer>();
+			// 运用播放器，加载一个音频文件
+			// sp.load(this, R.raw.p_knockout3, 1);
+			// 将音乐保存到SD中
+			map.put(1, sp.load(this, R.raw.p_knockout3, 1));
+			map.put(2, sp.load(this, R.raw.p_poke_foot3, 1));
+			map.put(3, sp.load(this, R.raw.pillow5, 1));
+
+			View view = findViewById(R.id.breath_layout);// 为了展示呼吸状态的			layout
+			AnimationDrawable anim_breath = (AnimationDrawable) view
+					.getBackground();//
+			anim_breath.start();// 开启呼吸的动画
+		}
+
+		// 点击眼睛的时候要触发的方法
+		public void Start_look(View view) {
+			Start_anim(R.drawable.look_anim, 1);
+		}
+
+		// 点击眼睛的时候要触发的方法
+		public void Start_talk(View view) {
+			Start_anim(R.drawable.talk_anim, 2);
+		}
+
+		// 点击眼睛的时候要触发的方法
+		public void Start_fart(View view) {
+			Start_anim(R.drawable.fart_anim, 3);
+
+		}
+
+		// 点击屏幕的时候所触发的方法
+		// 快速导包
+		// public void Start_fart(View view) {// 获取到：相对布局RelativeLayout
+		// // AnimationDrawable 播放器 把胶卷教给播放器
+		// AnimationDrawable anim = (AnimationDrawable) view.getBackground();// 获		取背景
+		// // fart_anim.xml
+		// // .获取胶卷
+		// anim.start();// 播放胶卷
+		// // anim.stop();
+		//
+		// }
+		public void Start_anim(int it1, int it2) {
+			/**
+			 * 1.先找到播放的舞台 2.给舞台舞台添加节目（添加背景） 3.通过舞台获取胶卷，将		胶卷教给播放器 4.设置该动画播放一次（找机器）；
+			 * 5.开始播放动画，接着播放声音 6.当动画播放完毕以后，需要让动画退场，显示呼		吸的动画 1.什么时候退场（time） 2.计时器
+			 * 
+			 */
+			final View other_layout = findViewById(R.id.other_layout);// 1
+			other_layout.setBackgroundResource(it1);// 2
+			AnimationDrawable anim = (AnimationDrawable) other_layout
+					.getBackground();// 3.look_anim.xml
+			anim.setOneShot(true);// 4.播放一次
+			anim.start();// 5
+			// 播放音乐
+			sp.play(map.get(it2), 1, 1, 0, 0, 1);
+			int time = 500;// 时间为500毫秒
+			// 获取胶卷的帧数（获取图片的张数） //通过遍历获取时间
+			for (int i = 0; i < anim.getNumberOfFrames(); i++) {
+				time = time + anim.getDuration(i);
+			}
+			/**
+			 * R ==runnable对象要执行的动作 delayMillis 时间
+			 */
+			handler.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					// 让动画退场
+					// 设置背景透明化
+					other_layout.setBackgroundColor(0X000000);
+				}
+			}, time);
+		}
+
+	}
+  

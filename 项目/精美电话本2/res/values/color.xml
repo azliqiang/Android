@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_bg">#7BA2B1</color>
+    
+    <color name="item_press">#8CD8F7</color>
+    
+    <color name="item_bg_add">#F1E631</color>
+    
+    <color name="item_press_add">#FBC902</color>
+</resources>

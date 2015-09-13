@@ -1,0 +1,312 @@
+
+    （对我们的攻击，先说，我要最用心！我不一定最优秀，谦虚！）
+    （提问，项目展示，普京和习近平握手，互送一个手机，为什么不送导弹！）
+    （1. 学校的设备，提前，做好统计，软件，安装，提前一天就，效率，）
+    （2. 提前了解学生，学校的层次，分数线，难易一定了解清楚，）
+    （3. 团队，比赛，）
+    （编程全国开发，巡回讲座，）
+
+
+        实训大纲
+        =======
+
+01. Day_01
+
+    1.01  开营仪式（老师要院校介绍，一定要有腕儿）
+
+    1.02  Android 环境搭建
+	1.android 环境的搭建
+		**参照Android_Day01_01项目中得MainActivity中 注释 笔记:有详细说明:**
+
+
+
+    1.03 Android模拟器的创建
+		01.点击状态栏上的小手机图标->打开窗口Android Virtual DeviceManager 
+		02.点击New ->打开窗口 Create New Android Virtual Device(AVD)
+		03.模拟器参数设置:
+			1.1 AVD Name: 模拟器名称:AVD_480_800  (本次以480*800的尺寸做项目)
+			1.2 Device: 选择模拟器的分辨率(屏幕大小)
+			1.3 Target: 模拟器的Android版本 
+			1.4 RAM : 模拟器的运行内存 512
+			1.5 Internal Storage: 模拟器的机身大小 200
+			1.6 SD Card: Size:内存卡大小  20;
+			1.7 点击OK
+			1.8 选择模拟器 -> Start ->Launch 
+			1.9 等待模拟器启动
+ ’  1.04 Android第一个项目
+	项目:Android_Day01_01
+
+	(1)创建项目
+	        01. File --> New --> Android Application Project；
+   	        02. --> Application Name: Android_Day01_01 —指定软件的名称
+’   	        03. —-> Project Name    : Android_Day01_01 —指定工程名称  在Package Explore中显示
+    	        04. —-> Minimum Required SDK :指定Android最低版本
+	        05. —-> Target SDK :  指定目标版本 
+	        06. —-> Compile With: 指定编辑环境版本
+	        07. —-> Theme: 选择主题
+                03. --> Next --> Next --> Next --> Blank Activity (Create Activity)；
+                04. --> Next --> Activity Name: MainActivity --> Finish
+	(2)介绍项目目录: 作用介绍
+		1.1.src文件夹
+		1.2.gen文件夹
+		1.3.Android 4.4文件夹
+		1.4.assets 文件夹
+		1.5.bin文件夹
+		1.6.libs文件夹
+		1.5.res文件夹
+		1.6.AndroidManifest.xml
+		1.7、default.properties
+	(3)运行项目
+		1.—->选中项目 ->右键 ->Run As ->Android Application
+		2.—->选中项目 ->状态栏上的运行图标
+		3.给学生讲解生成的apk软件在bin文件夹中,可以直接取出来
+
+    1.05  布局 Layout 介绍
+		
+		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   			 xmlns:tools="http://schemas.android.com/tools"
+  			  android:layout_width="match_parent"
+  			  android:layout_height="match_parent"
+  			  android:paddingBottom="@dimen/activity_vertical_margin"
+  			  android:paddingLeft="@dimen/activity_horizontal_margin"
+   			  android:paddingRight="@dimen/activity_horizontal_margin"
+ 			  android:paddingTop="@dimen/activity_vertical_margin"
+  			  tools:context=".MainActivity" >
+			 <!--RelativeLayout 项目布局  -->
+			 <!--显示文本的标签 TextView-->
+			 <!--android:layout_width="wrap_content"  文本的宽 -->
+   			 <!--android:layout_height="wrap_content" 文本的高 -->
+   			 <!-- android:text="@string/hello_world"  文本的显示内容-->
+   			 <TextView
+  			       android:layout_width="wrap_content"
+ 			       android:layout_height="wrap_content"
+ 			       android:text="北京千锋教育" />
+			<!-- 用"北京千锋教育"代替 "@string/hello_world"   -->
+
+			</RelativeLayout>
+
+    1.06  BMI计算器
+		项目:Android_Day01_BMI
+
+	1.1将图片拷贝到:drawable-hdpi中
+	1.2改变软件名称和软件图标
+		01.打开AndroidManifest.xml
+	    		<!-- android:icon="@drawable/bmi" 更改软件的图标 -->
+    	   	        <!-- android:label="@string/app_name" 更改软件的名称 -->
+   		 <application
+     		   android:allowBackup="true"
+     		   android:icon="@drawable/bmi"
+     		   android:label="@string/app_name"
+     		   android:theme="@style/AppTheme" >
+
+		strings.xml
+		<resources>
+   		 	<!-- 资源文件 -->
+		  <string name="app_name">BMI计算器</string>
+  		  <string name="action_settings">Settings</string>
+  		  <string name="hello_world">Hello world!</string>
+
+		</resources>
+	1.3布局文件activity_main.xml
+		
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bmi_bj"
+    tools:context=".MainActivity" >
+
+    <!-- RelativeLayout 相对布局  默认控件位置位于屏幕的左上角 -->
+    <!-- android:layout_width="match_parent" 设置控件的宽度 -->
+    <!-- 显示文本 -->
+    <!-- android:textSize="20sp" 设置文字的大小  sp专门为文字提供的大小单位 -->
+    <!-- android:layout_marginTop="80dp" 距上边距 -->
+    <!-- android:id="" 设置唯一标示用于 -->
+
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp"
+        android:text="身高(cm)："
+        android:textSize="20sp" />
+    <!-- 输入框控件 -->
+    <!-- android:layout_alignBaseline="@+id/tv_height" 同一行的设置 -->
+    <!-- android:layout_toRightOf="@+id/tv_height" 该控件唯一谁的右边 -->
+    <!-- 输入框提示信息android:hint="请输入身高" -->
+    <!-- android:inputType="number" 输入类型设置 -->
+
+    <EditText
+        android:id="@+id/ed_height"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_height"
+        android:layout_toRightOf="@+id/tv_height"
+        android:hint="请输入身高"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <!-- android:layout_alignLeft="@+id/tv_height" 控件左对齐 -->
+
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_height"
+        android:layout_below="@+id/tv_height"
+        android:layout_marginTop="10dp"
+        android:text="体重(kg)："
+        android:textSize="20sp" />
+    <!-- 输入框控件 -->
+    <!-- android:layout_alignBaseline="@+id/tv_height" 同一行的设置 -->
+    <!-- android:layout_toRightOf="@+id/tv_height" 该控件唯一谁的右边 -->
+    <!-- 输入框提示信息android:hint="请输入身高" -->
+
+    <EditText
+        android:id="@+id/ed_weight"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_weight"
+        android:layout_toRightOf="@+id/tv_weight"
+        android:hint="请输入体重"
+        android:inputType="number"
+        android:singleLine="true" />
+    <!-- 单选按钮 -->
+    <!-- RadioGroup控制单选按钮的选择范围 -->
+
+
+    <!-- android:orientation="horizontal"控件的排版模式 -->
+    <!-- android:orientation="horizontal" 水平居中属性 -->
+
+
+    <!-- 添加ID作为唯一标示 -->
+
+    <RadioGroup
+        android:id="@+id/sex_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_weight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <!-- 单选按钮 -->
+
+
+        <!-- </RelativeLayout>默认选中 -->
+
+        <RadioButton
+            android:id="@+id/man"
+            android:checked="true"
+            android:text="男" />
+
+        <RadioButton
+            android:id="@+id/woman"
+            android:text="女" />
+    </RadioGroup>
+    <!-- 按钮的控件 -->
+
+    <Button
+        android:id="@+id/btn_ceshi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sex_group"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ib_btn"
+        android:text="开始测试" />
+
+    <Button
+        android:id="@+id/btn_chongzhi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_ceshi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ib_btn"
+        android:onClick="Start_Delete"
+        android:text="重置" />
+    <!-- ScrollView可以支持滑动的控件 -->
+    <!-- 仅支持有且只有一个内部控件支持滑动 -->
+
+    <ScrollView
+        android:layout_width="260dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/btn_chongzhi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/tv_01"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/image_bmi"
+                android:text="@string/BMI_Stg"
+                android:textSize="20sp" />
+            <!-- 显示图片的控件 -->
+            <!-- android:src="" 引入一张显示图片 -->
+
+            <ImageView
+                android:id="@+id/image_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/bmi_image" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+	1.4MainActivity.java
+  /**
+ * 
+ * Activity 一个activity相当于一个显示界面，而一个显示界面需要一个显示视图
+ */
+public class MainActivity extends Activity {
+
+
+	private EditText ed_height = null;
+	private EditText ed_weight = null;
+	private RadioGroup sex_group = null;
+	private Button btn_ceshi = null;
+	private Button btn_chongzhi = null;
+	public String sex = "男";// 性别默认为：男
+
+	/**
+	 * onCreate 启动activity的时候，调用的方法
+	 * 
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// 设置当前界面的显示视图
+		setContentView(R.layout.activity_main);
+		// it = (int)1.1;
+		ed_height = (EditText) this.findViewById(R.id.ed_height);// 身高的输入框
+		ed_weight = (EditText) this.findViewById(R.id.ed_weight);
+		sex_group = (RadioGroup) findViewById(R.id.sex_group);
+		btn_ceshi = (Button) findViewById(R.id.btn_ceshi);
+		btn_chongzhi = (Button) findViewById(R.id.btn_chongzhi);
+	
+		// 给按钮添加监听事件
+		// 点击btn_ceshi .就会触发onclick方法
+		btn_ceshi.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+		}
+	}
+	
+
+			
+		
+
+
+
